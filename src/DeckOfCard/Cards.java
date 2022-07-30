@@ -47,8 +47,7 @@ public class Cards {
 	 /**
 	  * Created a display method to print the array list of cardsDeck.
 	  * We are using for-each loop to print all the element of ArrayList.
-	  * We are storing all the elements of cardsDeck arraylist in element.
-	  * @param cardsDeck
+	  * @param cardsDeck  We are storing all the elements of cardsDeck arraylist in element.
 	  */
 
 	 public static void toDisplay(ArrayList<String> cardsDeck) {
@@ -63,7 +62,11 @@ public class Cards {
 
 	        System.out.println();
 	    }
-
+	 /**
+	  * In this we have to define no of players should be minimum 2 and maximum 4.
+	  * So we have use if condition to define no of players.
+	  * If no of player is not within the range then it will again call this method.
+	  */
 
 	 public void noOfPlayers() {
 
@@ -86,7 +89,21 @@ public class Cards {
 	            noOfPlayers();
 
 	        }
-	        scanner.close(); // Closed the Scanner Object.
+	        sc.close(); // Closed the Scanner Object.
 	    }
+	 /**
+	  *  In this method we have defined the sequence of the player.
+	  * @param player We are iterating the loop till player input.
+	  */
+
+
+	 public void sequenceOfPlay(int player) {
+
+	        System.out.println("\nSequence of cards are below : ");
+
+	        toshuffle(cardsDeck, player);                                                        // caling toShuffle Method inside it.
+	    }
+
+
 
 }
