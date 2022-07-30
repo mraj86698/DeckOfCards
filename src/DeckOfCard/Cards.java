@@ -1,6 +1,7 @@
 package DeckOfCard;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Cards {
 	/**
@@ -11,6 +12,7 @@ public class Cards {
 	        System.out.println("Welcome to the gaming world of Deck of Cards");
 
 	    }
+	 public static final Scanner sc = new Scanner(System.in);
 
 	 public ArrayList<String> cardsDeck = new ArrayList<String>();
 
@@ -60,6 +62,31 @@ public class Cards {
 	        }
 
 	        System.out.println();
+	    }
+
+
+	 public void noOfPlayers() {
+
+	        System.out.print("\nEnter number of players minimum 2 , maximum 4 : ");
+
+	        int player = sc.nextInt();
+
+	        if (player >= 2 && player <= 4) {
+
+	            System.out.println("\n" + player + " players will play the game");
+
+	            sequenceOfPlay(player);                                                          // We are calling sequence method inside the if condition
+
+	        }
+
+	        else {
+
+	            System.out.println("Please enter number of players in the Range");
+
+	            noOfPlayers();
+
+	        }
+	        scanner.close(); // Closed the Scanner Object.
 	    }
 
 }
