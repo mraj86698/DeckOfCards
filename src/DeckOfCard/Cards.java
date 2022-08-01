@@ -7,102 +7,161 @@ public class Cards {
 	/**
 	 * Simply created a Welcome Message Method without any return type.
 	 */
-	 public void welcome() {
+	public void welcome() {
 
-	        System.out.println("Welcome to the gaming world of Deck of Cards");
+		System.out.println("Welcome to the gaming world of Deck of Cards");
 
-	    }
-	 public static final Scanner sc = new Scanner(System.in);
+	}
 
-	 public ArrayList<String> cardsDeck = new ArrayList<String>();
+	public static final Scanner sc = new Scanner(System.in);
 
-	 /**
-	  * In this method we have initialized the size of cards.
-	  * In this I have created String type array of Suits and Ranks to store its value and initialize it.
-	  * In this we are printing the size of card.
-	  * In this method we are also printing all the possible combination of card.
-	  */
-	 public void deckOfCards() {
+	public ArrayList<String> cardsDeck = new ArrayList<String>();
 
-	        String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
+	/**
+	 * In this method we have initialized the size of cards. In this I have created
+	 * String type array of Suits and Ranks to store its value and initialize it. In
+	 * this we are printing the size of card. In this method we are also printing
+	 * all the possible combination of card.
+	 */
+	public void deckOfCards() {
 
-	        String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "King", "Queen", "Ace"};
+		String[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
 
-	        int numOfCards = suits.length * ranks.length;
+		String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "King", "Queen", "Ace" };
 
-	        System.out.println("\nNumber of cards in the deck is : " + numOfCards);
+		int numOfCards = suits.length * ranks.length;
 
-	        // First we have to iterate for loop for ranks starting from index 0.
-	        for (int i = 0; i < ranks.length; i++) {
+		System.out.println("\nNumber of cards in the deck is : " + numOfCards);
 
-	            // Now we have to iterate the suits for all the indexes of ranks
-	            for (int j = 0; j < suits.length; j++) {
+		// First we have to iterate for loop for ranks starting from index 0.
+		for (int i = 0; i < ranks.length; i++) {
 
-	                cardsDeck.add(ranks[i] + "----->" + suits[j]);
-	            }
-	        }
-	        toDisplay(cardsDeck);
-	    }
+			// Now we have to iterate the suits for all the indexes of ranks
+			for (int j = 0; j < suits.length; j++) {
 
-	 /**
-	  * Created a display method to print the array list of cardsDeck.
-	  * We are using for-each loop to print all the element of ArrayList.
-	  * @param cardsDeck  We are storing all the elements of cardsDeck arraylist in element.
-	  */
+				cardsDeck.add(ranks[i] + "----->" + suits[j]);
+			}
+		}
+		toDisplay(cardsDeck);
+	}
 
-	 public static void toDisplay(ArrayList<String> cardsDeck) {
+	/**
+	 * Created a display method to print the array list of cardsDeck. We are using
+	 * for-each loop to print all the element of ArrayList.
+	 *
+	 * @param cardsDeck We are storing all the elements of cardsDeck arraylist in
+	 *                  element.
+	 */
 
-	        System.out.println("\nCards in Deck:");
+	public static void toDisplay(ArrayList<String> cardsDeck) {
 
-	        for (String element : cardsDeck) {
+		System.out.println("\nCards in Deck:");
 
-	            System.out.println(element);
+		for (String element : cardsDeck) {
 
-	        }
+			System.out.println(element);
 
-	        System.out.println();
-	    }
-	 /**
-	  * In this we have to define no of players should be minimum 2 and maximum 4.
-	  * So we have use if condition to define no of players.
-	  * If no of player is not within the range then it will again call this method.
-	  */
+		}
 
-	 public void noOfPlayers() {
+		System.out.println();
+	}
 
-	        System.out.print("\nEnter number of players minimum 2 , maximum 4 : ");
+	/**
+	 * In this we have to define no of players should be minimum 2 and maximum 4. So
+	 * we have use if condition to define no of players. If no of player is not
+	 * within the range then it will again call this method.
+	 */
 
-	        int player = sc.nextInt();
+	public void noOfPlayers() {
 
-	        if (player >= 2 && player <= 4) {
+		System.out.print("\nEnter number of players minimum 2 , maximum 4 : ");
 
-	            System.out.println("\n" + player + " players will play the game");
+		int player = sc.nextInt();
 
-	            sequenceOfPlay(player);                                                          // We are calling sequence method inside the if condition
+		if (player >= 2 && player <= 4) {
 
-	        }
+			System.out.println("\n" + player + " players will play the game");
 
-	        else {
+			sequenceOfPlay(player); // We are calling sequence method inside the if condition
 
-	            System.out.println("Please enter number of players in the Range");
+		}
 
-	            noOfPlayers();
+		else {
 
-	        }
-	        sc.close(); // Closed the Scanner Object.
-	    }
-	 /**
-	  *  In this method we have defined the sequence of the player.
-	  * @param player We are iterating the loop till player input.
-	  */
+			System.out.println("Please enter number of players in the Range");
+
+			noOfPlayers();
+
+		}
+		sc.close(); // Closed the Scanner Object.
+	}
+
+	/**
+	 * In this method we have defined the sequence of the player.
+	 *
+	 * @param player We are iterating the loop till player input.
+	 * cardsDeck Shuffling the cards by using Math.random and storing it in temp variable of ArrayList
+	 * Again we are assigning temp to cardDeck
+	 */
+
+	public void sequenceOfPlay(int player) {
+
+		System.out.println("\nSequence of cards are below : ");
+
+		//toshuffle(cardsDeck, player); // calling toShuffle Method inside it.
+		System.out.println("Shuffling the cards before Distribution");
+
+		ArrayList<String> temp = new ArrayList<String>();
+
+		while (!cardsDeck.isEmpty()) {
+
+			int loc = (int) (Math.random() * cardsDeck.size());
+
+			temp.add(cardsDeck.get(loc));
+
+			cardsDeck.remove(loc);
+
+		}
+
+		cardsDeck = temp;
+
+		toDisplay(cardsDeck); // To display the cards this method is called.
+
+		cardDistribution(cardsDeck, player); // Calling Card Distribution method inside this method
+	}
+
+	/**
+	 * Created a method for equal distribution of cards.
+	 *
+	 * @param cardsDeck
+	 * @param player    Every player will be distributed 9 cards.
+	 */
+
+	public static void cardDistribution(ArrayList<String> cardsDeck, int player) {
+
+		// This loop will iterate for no of players
+		for (int i = 0; i < player; i++) {
+
+			System.out.print("\nPlayer " + (i + 1) + " got cards:\n");
+
+			// This loop will iterate for no of cards for each player
+			for (int j = 0; j < 9; j++) {
+
+				System.out.print("\t" + cardsDeck.get(i + j * player));
+
+			}
+
+		}
+
+		System.out.println();
+	}
+
+	public void toShuffle() {
+		// TODO Auto-generated method stub
+
+	}
 
 
-	 public void sequenceOfPlay(int player) {
-
-	        System.out.println("\nSequence of cards are below : ");
-
-	        toshuffle(cardsDeck, player);                                                        // caling toShuffle Method inside it.
-	    }
 
 
 

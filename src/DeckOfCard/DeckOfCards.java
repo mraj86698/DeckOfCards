@@ -8,7 +8,8 @@ public class DeckOfCards {
 		cards.welcome();
 		cards.deckOfCards();
 		cards.noOfPlayers();
-		cards.sequenceOfPlay();
+		cards.sequenceOfPlay(4);
+	    cards.toShuffle();
 
 	}
 
